@@ -21,7 +21,7 @@ import java.util.List;
 
 public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
-    private Button btnSave,getall;
+    private Button btnSave,getall,nexAct;
     private EditText editName,editPunch,editKick;
     private TextView txtdata;
     private String allKickBoxers;
@@ -36,6 +36,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         editKick=findViewById(R.id.kickid);
         editPunch=findViewById(R.id.punchid);
         txtdata=findViewById(R.id.txtgetdata);
+        nexAct=findViewById(R.id.nextact);
         txtdata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,6 +49,12 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                         }
                     }
                 });
+                nexAct.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
 
             }
         });
@@ -57,6 +64,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             public void onClick(View v) {
                 allKickBoxers="";
                 ParseQuery<ParseObject> queryall= ParseQuery.getQuery("KickBoxer");
+                queryall.whereGreaterThan("punchSpeed",100);
                 queryall.findInBackground(new FindCallback<ParseObject>() {
                     @Override
                     public void done(List<ParseObject> objects, ParseException e) {
@@ -76,7 +84,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                 });
             }
         });
-    } 
+    }
 
 
     @Override
@@ -85,13 +93,13 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         try {
 
             kickBoxer.put("name", editName.getText().toString());
-            kickBoxer.put("punchSpeed", editPunch.getText().toString());
+            kickBoxer.put("punchSpeed", Integer.parseInt(editPunch.getText().toString()));
             kickBoxer.put("kickSpeed", editKick.getText().toString());
             kickBoxer.saveInBackground(new SaveCallback() {
                 @Override
                 public void done(ParseException e) {
                     if (e == null) {
-                        FancyToast.makeText(SignUp.this, kickBoxer.get("name") + " saved successfully", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, false).show();
+                      FancyToast.makeText(SignUp.this, kickBoxer.get("name") + " saved successfully", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, false).show();
                     } else {
                         FancyToast.makeText(SignUp.this, kickBoxer.get("name") + " is not saved >.<", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, false).show();
                     }

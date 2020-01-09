@@ -79,7 +79,6 @@
         android:id="@+id/getall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
         android:layout_marginTop="88dp"
         android:background="#2196F3"
         android:text="get all"
@@ -89,4 +88,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtgetdata"
         app:layout_constraintVertical_bias="0.4" />
+
+    <Button
+        android:id="@+id/nextact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#E91E63"
+        android:text="Switch to another activity"
+        app:layout_constraintBottom_toTopOf="@+id/getall"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtgetdata" />
 </androidx.constraintlayout.widget.ConstraintLayout>
