@@ -2,6 +2,7 @@ package com.example.instagramclone;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -49,13 +50,15 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                         }
                     }
                 });
-                nexAct.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
 
-                    }
-                });
 
+            }
+        });
+        nexAct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(SignUp.this,SignUplogin_activity.class);
+                startActivity(intent);
             }
         });
         getall=findViewById(R.id.getall);
