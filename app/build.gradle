@@ -28,4 +28,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation "com.github.parse-community.Parse-SDK-Android:parse:1.22.1"
     implementation 'com.github.Shashank02051997:FancyToast-Android:0.1.6'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
 }
